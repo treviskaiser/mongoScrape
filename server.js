@@ -28,12 +28,9 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 
-var MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytimes";
 
-mongoose.connect("mongodb://localhost/nytimes", {
-  useNewUrlParser: true
-});
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
@@ -164,10 +161,10 @@ app.listen(PORT, function() {
 // app.put("/drop", function(req, res) {
 //   db.Article.remove({});
 // });
-// app.delete("/drop", (req, res) => {
-//   db.Article.remove({}, (err, result) => {
-//     if (err) return console.log(err);
-//     console.log(req.body);
-//     res.redirect("/");
-//   });
-// });
+app.delete("/drop", (req, res) => {
+  db.Article.remove({}, (err, result) => {
+    if (err) return console.log(err);
+    console.log(req.body);
+    res.redirect("/");
+  });
+});
