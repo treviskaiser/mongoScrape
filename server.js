@@ -27,6 +27,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
+
+var MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
 mongoose.connect("mongodb://localhost/nytimes", {
   useNewUrlParser: true
 });
@@ -156,3 +160,14 @@ app.post("/articles/:id", function(req, res) {
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
 });
+
+// app.put("/drop", function(req, res) {
+//   db.Article.remove({});
+// });
+// app.delete("/drop", (req, res) => {
+//   db.Article.remove({}, (err, result) => {
+//     if (err) return console.log(err);
+//     console.log(req.body);
+//     res.redirect("/");
+//   });
+// });

@@ -148,8 +148,9 @@ $(document).on("click", ".save", function() {
 });
 
 $("#clear").on("click", function() {
+  console.log(2);
   $.ajax({
-    method: "DELETE",
+    method: "PUT",
     url: "/drop"
   }) // With that done
     .then(function(data) {
