@@ -162,7 +162,7 @@ app.listen(PORT, function() {
 // app.put("/drop", function(req, res) {
 //   db.Article.remove({});
 // });
-app.delete("/drop", (req, res) => {
+app.get("/drop", (req, res) => {
   db.Article.remove({}, (err, result) => {
     if (err) return console.log(err);
     console.log(req.body);

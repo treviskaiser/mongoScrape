@@ -150,11 +150,10 @@ $(document).on("click", ".save", function() {
 $("#clear").on("click", function() {
   console.log(2);
   $.ajax({
-    method: "PUT",
+    method: "GET",
     url: "/drop"
   }) // With that done
     .then(function(data) {
-      // Log the response
-      console.log(data);
+      $(".card").empty();
     });
 });
